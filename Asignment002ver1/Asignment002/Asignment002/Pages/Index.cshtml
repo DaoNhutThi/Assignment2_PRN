@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="container mt-4">
+    <h1 class="text">Pizza Menu</h1>
+   <form>
+        Search: <input type="text"  id="SearchBox" placeholder="Search" asp-for="SearchAS">
+        <button class="btn_search" type="submit" value="fillter">Search</button>
+   </form>
+    <div class="row mt-4">
+        @foreach (var product in Model.Product)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="@product.ProductImage" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <p class="card-text">Price: $@product.UnitPrice</p>
+                        @* <p class="card-text">Category: @product.Category.CategoryName</p> *@
+                        @* <p class="card-text">@product.Supplier.CompanyName</p> *@
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
